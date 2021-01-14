@@ -6,6 +6,7 @@ import styles from './styles';
 // Components
 import QuestionCard from '../../components/QuestionCard';
 import AnimatedCard from '../../components/AnimatedCard';
+import Results from '../../components/Results';
 
 // Hooks
 import { useFetch, States } from '../../hooks/useFetch';
@@ -44,7 +45,9 @@ export function Quiz() {
   }
 
   if (currentIndex >= totalQuestion) {
-    return <Text>{correct}</Text>;
+    return (
+      <Results correct={correct} questions={questions!} total={totalQuestion} />
+    );
   }
 
   return (
