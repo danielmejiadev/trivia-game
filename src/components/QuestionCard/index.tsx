@@ -4,14 +4,19 @@ import Animated from 'react-native-reanimated';
 
 import styles from './styles';
 
-interface CardProps {
+interface QuestionCardProps {
   title: string;
   question: string;
   current: number;
   total: number;
-};
+}
 
-export function Card({ title, question, current, total }: CardProps) {
+export function QuestionCard({
+  title,
+  question,
+  current,
+  total
+}: QuestionCardProps) {
   return (
     <View style={styles.main}>
       <Animated.View style={[styles.overlay]}>
@@ -27,4 +32,4 @@ export function Card({ title, question, current, total }: CardProps) {
   );
 }
 
-export default Card;
+export default QuestionCard;

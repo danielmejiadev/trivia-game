@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
   main: {
     ...StyleSheet.absoluteFillObject,
     justifyContent: 'center',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   overlay: {
     alignItems: 'center',
@@ -16,26 +16,26 @@ const styles = StyleSheet.create({
     width,
     padding: 20,
     borderRadius: 24,
-    backgroundColor: '#C9E9E7',
+    backgroundColor: '#C9E9E7'
   },
   header: {
-    flexDirection: 'row',
+    flexDirection: 'row'
   },
   title: {
     fontSize: 28,
-    fontWeight: 'bold',
+    fontWeight: 'bold'
   },
   content: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
   question: {
     fontSize: 20,
-    marginBottom: 20,
+    marginBottom: 20
   },
   currentLabel: {
     fontSize: 16,
-    textAlign: 'center',
+    textAlign: 'center'
   }
 });
 

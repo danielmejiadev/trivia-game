@@ -1,8 +1,11 @@
 import React from 'react';
 import { View, Text, Dimensions } from 'react-native';
 import { interpolate } from 'react-native-reanimated';
-import { usePanGestureHandler, withSpring } from 'react-native-redash/lib/module/v1';
-import Animated from "react-native-reanimated";
+import {
+  usePanGestureHandler,
+  withSpring
+} from 'react-native-redash/lib/module/v1';
+import Animated from 'react-native-reanimated';
 import { PanGestureHandler } from 'react-native-gesture-handler';
 
 import styles from './styles';
@@ -16,7 +19,12 @@ interface AnimatedCardProps {
 }
 
 export function AnimatedCard({ children, onSnap }: AnimatedCardProps) {
-  const { gestureHandler, translation, velocity, state } = usePanGestureHandler();
+  const {
+    gestureHandler,
+    translation,
+    velocity,
+    state
+  } = usePanGestureHandler();
   const translateX = withSpring({
     value: translation.x,
     velocity: velocity.x,
@@ -24,9 +32,9 @@ export function AnimatedCard({ children, onSnap }: AnimatedCardProps) {
     snapPoints: [-windowWidth, 0, windowWidth],
     config: {
       damping: 10,
-      speed: 40,
+      speed: 40
     },
-    onSnap: ([x]: number[]) => x !== 0 && onSnap(x),
+    onSnap: ([x]: number[]) => x !== 0 && onSnap(x)
   });
   const translateY = withSpring({
     value: translation.y,
@@ -37,22 +45,39 @@ export function AnimatedCard({ children, onSnap }: AnimatedCardProps) {
 
   const trueOpacity = interpolate(translateX, {
     inputRange: [0, width / 4],
-    outputRange: [0, 1],
+    outputRange: [0, 1]
   });
   const falseOpacity = interpolate(translateX, {
     inputRange: [-width / 4, 0],
-    outputRange: [1, 0],
+    outputRange: [1, 0]
   });
 
   return (
-    <PanGestureHandler {...gestureHandler} >
-      <Animated.View style={[styles.main, { transform: [{ translateY: translateY }, { translateX }] }]}>
+    <PanGestureHandler {...gestureHandler}>
+      <Animated.View
+        style={[
+          styles.main,
+          { transform: [{ translateY: translateY }, { translateX }] }
+        ]}
+      >
         {children}
         <View style={styles.buttons}>
-          <Animated.View style={[styles.tagContainer, styles.trueContainer, { opacity: trueOpacity }]}>
+          <Animated.View
+            style={[
+              styles.tagContainer,
+              styles.trueContainer,
+              { opacity: trueOpacity }
+            ]}
+          >
             <Text style={styles.trueLabel}>TRUE</Text>
           </Animated.View>
-          <Animated.View style={[styles.tagContainer, styles.falseContainer, { opacity: falseOpacity }]}>
+          <Animated.View
+            style={[
+              styles.tagContainer,
+              styles.falseContainer,
+              { opacity: falseOpacity }
+            ]}
+          >
             <Text style={styles.falseLabel}>FALSE</Text>
           </Animated.View>
         </View>

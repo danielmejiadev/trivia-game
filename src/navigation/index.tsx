@@ -1,6 +1,9 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator, StackScreenProps } from '@react-navigation/stack';
+import {
+  createStackNavigator,
+  StackScreenProps
+} from '@react-navigation/stack';
 
 // Screens
 import Home from '../screens/Home';
