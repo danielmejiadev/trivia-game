@@ -13,13 +13,26 @@ import { useFetch, States } from '../../hooks/useFetch';
 // Interfaces
 import { Questions } from '../../interfaces/Questions';
 
-const QUIZ_BASE_URL = 'https://opentdb.com/api.php?amount=10&difficulty=hard&type=boolean';
+const QUIZ_BASE_URL =
+  'https://opentdb.com/api.php?amount=10&difficulty=hard&type=boolean';
 
 export function Quiz() {
   const [data, state] = useFetch<Questions>(QUIZ_BASE_URL);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [correct, setCorrect] = useState(0);
   const questions = data?.results;
-  const questionAnswered = useCallback(() => setCurrentIndex((prev) => prev + 1), []);
+  const currentQuestion = questions!?.[currentIndex];
+  const totalQuestion = questions!?.length;
+  const questionAnswered = useCallback(
+    (x) => {
+      const { correct_answer: correctAnswer } = currentQuestion;
+      if (JSON.parse(correctAnswer.toLowerCase()) === x > 0) {
+        setCorrect((prev) => prev + 1);
+      }
+      setCurrentIndex((prev) => prev + 1);
+    },
+    [currentQuestion]
+  );
 
   if ([States.LOADING, States.IDLE].includes(state)) {
     return (
@@ -30,26 +43,25 @@ export function Quiz() {
     );
   }
 
-  const currentQuestion = questions![currentIndex];
-  const totalQuestion = questions!.length;
+  if (currentIndex >= totalQuestion) {
+    return <Text>{correct}</Text>;
+  }
 
   return (
     <View style={styles.container}>
       <View style={styles.cards}>
-        {
-          questions!
-            .filter((_, index) => index > currentIndex)
-            .reverse()
-            .map(({ category, question }, index) => (
-              <QuestionCard
-                key={question}
-                title={category}
-                question={question}
-                total={totalQuestion}
-                current={totalQuestion - index}
-              />
-            ))
-        }
+        {questions!
+          .filter((_, index) => index > currentIndex)
+          .reverse()
+          .map(({ category, question }, index) => (
+            <QuestionCard
+              key={question}
+              title={category}
+              question={question}
+              total={totalQuestion}
+              current={totalQuestion - index}
+            />
+          ))}
         <AnimatedCard onSnap={questionAnswered}>
           <QuestionCard
             title={currentQuestion.category}
