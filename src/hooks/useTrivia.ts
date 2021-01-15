@@ -4,7 +4,7 @@ import { useCallback, useEffect, useReducer } from 'react';
 import { Question } from '../interfaces/Question';
 
 // Hooks
-import useFetch from './useFetch';
+import { useFetch } from './useFetch';
 
 // Client
 import { getQuestions } from '../apiClient/questions';
