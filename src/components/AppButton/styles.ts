@@ -1,10 +1,8 @@
 import styled from 'styled-components/native';
 
 export const Container = styled.TouchableOpacity`
-  elevation: 8;
   border-radius: 10px;
-  padding-vertical: 12px;
-  padding-horizontal: 20px;
+  padding: 12px 20px;
   background-color: #74bcb8;
 `;
 
