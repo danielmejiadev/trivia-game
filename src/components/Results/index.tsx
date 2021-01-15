@@ -8,24 +8,30 @@ import styles from './styles';
 
 interface ResultsProps {
   questions: Question[];
-  correct: number;
   total: number;
+  onPlayAgain: () => void;
 }
 
-export function Results({ questions, correct, total }: ResultsProps) {
+export function Results({ questions, total, onPlayAgain }: ResultsProps) {
+  const { length: totalCorrect } = questions.filter(
+    ({ isCorrect }) => isCorrect
+  );
+
   return (
     <View style={styles.main}>
       <ScrollView style={styles.scroll}>
         <Text style={styles.title}>You score</Text>
-        <Text style={styles.currentLabel}>{`${correct} of ${total}`}</Text>
+        <Text style={styles.currentLabel}>{`${totalCorrect} of ${total}`}</Text>
         <View style={styles.content}>
-          {questions.map(({ question }) => (
-            <Text style={styles.question}>{`${question}`}</Text>
+          {questions.map(({ isCorrect, question }) => (
+            <Text key={question} style={styles.question}>{`${
+              isCorrect ? '+' : '-'
+            } ${question}`}</Text>
           ))}
         </View>
       </ScrollView>
       <View style={styles.footer}>
-        <Button title="PLAY AGAIN?" onPress={() => {}} />
+        <Button title="PLAY AGAIN?" onPress={onPlayAgain} />
       </View>
     </View>
   );

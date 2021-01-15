@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import { ActivityIndicator, View, Text } from 'react-native';
 
 import styles from './styles';
@@ -9,31 +9,22 @@ import AnimatedCard from '../../components/AnimatedCard';
 import Results from '../../components/Results';
 
 // Hooks
-import { useFetch, States } from '../../hooks/useFetch';
+import { States } from '../../hooks/useFetch';
+import { useTrivia } from '../../hooks/useTrivia';
 
-// Interfaces
-import { Questions } from '../../interfaces/Questions';
+// Navigation
+import { RootStackProps } from '../../navigation';
 
-const QUIZ_BASE_URL =
-  'https://opentdb.com/api.php?amount=10&difficulty=hard&type=boolean';
-
-export function Quiz() {
-  const [data, state] = useFetch<Questions>(QUIZ_BASE_URL);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [correct, setCorrect] = useState(0);
-  const questions = data?.results;
-  const currentQuestion = questions!?.[currentIndex];
-  const totalQuestion = questions!?.length;
-  const questionAnswered = useCallback(
-    (x) => {
-      const { correct_answer: correctAnswer } = currentQuestion;
-      if (JSON.parse(correctAnswer.toLowerCase()) === x > 0) {
-        setCorrect((prev) => prev + 1);
-      }
-      setCurrentIndex((prev) => prev + 1);
-    },
-    [currentQuestion]
-  );
+export function Quiz({ navigation: { replace } }: RootStackProps<'Quiz'>) {
+  const goToHome = useCallback(() => replace('Home'), [replace]);
+  const {
+    currentIndex,
+    currentQuestion,
+    questions,
+    totalQuestion,
+    questionAnswered,
+    state
+  } = useTrivia();
 
   if ([States.LOADING, States.IDLE].includes(state)) {
     return (
@@ -46,14 +37,18 @@ export function Quiz() {
 
   if (currentIndex >= totalQuestion) {
     return (
-      <Results correct={correct} questions={questions!} total={totalQuestion} />
+      <Results
+        questions={questions}
+        total={totalQuestion}
+        onPlayAgain={goToHome}
+      />
     );
   }
 
   return (
     <View style={styles.container}>
       <View style={styles.cards}>
-        {questions!
+        {questions
           .filter((_, index) => index > currentIndex)
           .reverse()
           .map(({ category, question }, index) => (

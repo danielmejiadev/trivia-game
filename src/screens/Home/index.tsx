@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Button } from 'react-native';
 import { RootStackProps } from '../../navigation';
 
 export function Home({ navigation }: RootStackProps<'Home'>) {
-  const startQuiz = () => navigation.navigate('Quiz');
+  const startQuiz = () => navigation.replace('Quiz');
 
   return (
     <View style={styles.container}>
