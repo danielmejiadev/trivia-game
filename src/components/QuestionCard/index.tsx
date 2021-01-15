@@ -1,9 +1,15 @@
 import React from 'react';
-import { View, Text } from 'react-native';
-import Animated from 'react-native-reanimated';
 import he from 'he';
 
-import styles from './styles';
+import {
+  Main,
+  Overlay,
+  Header,
+  Title,
+  Content,
+  Question,
+  CurrentLabel
+} from './styles';
 
 interface QuestionCardProps {
   title: string;
@@ -19,17 +25,17 @@ export function QuestionCard({
   total
 }: QuestionCardProps) {
   return (
-    <View style={styles.main}>
-      <Animated.View style={[styles.overlay]}>
-        <View style={styles.header}>
-          <Text style={styles.title}>{title}</Text>
-        </View>
-        <View style={styles.content}>
-          <Text style={styles.question}>{he.decode(question)}</Text>
-          <Text style={styles.currentLabel}>{`${current} of ${total}`}</Text>
-        </View>
-      </Animated.View>
-    </View>
+    <Main>
+      <Overlay>
+        <Header>
+          <Title>{title}</Title>
+        </Header>
+        <Content>
+          <Question>{he.decode(question)}</Question>
+          <CurrentLabel>{`${current} of ${total}`}</CurrentLabel>
+        </Content>
+      </Overlay>
+    </Main>
   );
 }
 

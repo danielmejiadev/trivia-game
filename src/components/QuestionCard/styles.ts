@@ -1,43 +1,50 @@
-import { StyleSheet, Dimensions } from 'react-native';
+import { Dimensions } from 'react-native';
+import styled from 'styled-components/native';
 
 const { width: windowWidth } = Dimensions.get('window');
 const width = windowWidth * 0.8;
 const height = width * 2;
 
-const styles = StyleSheet.create({
-  main: {
-    ...StyleSheet.absoluteFillObject,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  overlay: {
-    alignItems: 'center',
-    height,
-    width,
-    padding: 20,
-    borderRadius: 24,
-    backgroundColor: '#C9E9E7'
-  },
-  header: {
-    flexDirection: 'row'
-  },
-  title: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    textAlign: 'center'
-  },
-  content: {
-    flex: 1,
-    justifyContent: 'center'
-  },
-  question: {
-    fontSize: 20,
-    marginBottom: 20
-  },
-  currentLabel: {
-    fontSize: 16,
-    textAlign: 'center'
-  }
-});
+export const Main = styled.View`
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  justify-content: center;
+  align-items: center;
+`;
 
-export default styles;
+export const Overlay = styled.View`
+  align-items: center;
+  height: ${height};
+  width: ${width};
+  padding: 20px;
+  border-radius: 24px;
+  background-color: #c9e9e7;
+`;
+
+export const Header = styled.View`
+  flex-direction: row;
+`;
+
+export const Title = styled.Text`
+  font-size: 28;
+  font-weight: bold;
+  text-align: center;
+`;
+
+export const Content = styled.View`
+  flex: 1;
+  justify-content: center;
+`;
+
+export const Question = styled.Text`
+  font-size: 20;
+  margin-bottom: 20px;
+`;
+
+export const CurrentLabel = styled.Text`
+  font-size: 16;
+  text-align: center;
+`;
