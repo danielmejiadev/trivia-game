@@ -5,8 +5,7 @@ const styles = StyleSheet.create({
     flex: 1
   },
   scroll: {
-    padding: 15,
-    backgroundColor: '#C9E9E7'
+    padding: 15
   },
   title: {
     fontSize: 28,

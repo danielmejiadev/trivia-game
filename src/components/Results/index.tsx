@@ -1,8 +1,11 @@
 import React from 'react';
-import { View, Text, ScrollView, Button } from 'react-native';
+import { View, Text, ScrollView } from 'react-native';
 
 // Interfaces
 import { Question } from '../../interfaces/Question';
+
+// Components
+import AppButton from '../AppButton';
 
 import styles from './styles';
 
@@ -31,7 +34,7 @@ export function Results({ questions, total, onPlayAgain }: ResultsProps) {
         </View>
       </ScrollView>
       <View style={styles.footer}>
-        <Button title="PLAY AGAIN?" onPress={onPlayAgain} />
+        <AppButton title="PLAY AGAIN?" onPress={onPlayAgain} />
       </View>
     </View>
   );
