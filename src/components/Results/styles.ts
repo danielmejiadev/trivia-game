@@ -10,7 +10,7 @@ export const Scroll = styled.ScrollView`
 `;
 
 export const Content = styled.View`
-  margin-top: 10;
+  margin-top: 10px;
   flex: 1;
   justify-content: center;
 `;
