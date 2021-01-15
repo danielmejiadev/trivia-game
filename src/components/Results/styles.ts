@@ -1,34 +1,36 @@
-import { StyleSheet } from 'react-native';
+import styled from 'styled-components/native';
 
-const styles = StyleSheet.create({
-  main: {
-    flex: 1,
-    backgroundColor: 'white'
-  },
-  scroll: {
-    padding: 15
-  },
-  title: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    textAlign: 'center'
-  },
-  content: {
-    marginTop: 10,
-    flex: 1,
-    justifyContent: 'center'
-  },
-  question: {
-    fontSize: 18,
-    marginBottom: 20
-  },
-  currentLabel: {
-    fontSize: 16,
-    textAlign: 'center'
-  },
-  footer: {
-    padding: 15
-  }
-});
+export const Main = styled.View`
+  flex: 1;
+  background-color: white;
+`;
 
-export default styles;
+export const Scroll = styled.ScrollView`
+  padding: 15px;
+`;
+
+export const Content = styled.View`
+  margin-top: 10;
+  flex: 1;
+  justify-content: center;
+`;
+
+export const Title = styled.Text`
+  font-size: 28;
+  font-weight: bold;
+  text-align: center;
+`;
+
+export const QuestionLabel = styled.Text`
+  font-size: 18;
+  margin-bottom: 20px;
+`;
+
+export const CurrentLabel = styled.Text`
+  font-size: 16;
+  text-align: center;
+`;
+
+export const Footer = styled.View`
+  padding: 15px;
+`;

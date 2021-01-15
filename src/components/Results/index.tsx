@@ -1,5 +1,4 @@
 import React from 'react';
-import { View, Text, ScrollView } from 'react-native';
 
 // Interfaces
 import { Question } from '../../interfaces/Question';
@@ -7,7 +6,15 @@ import { Question } from '../../interfaces/Question';
 // Components
 import AppButton from '../AppButton';
 
-import styles from './styles';
+import {
+  Main,
+  Scroll,
+  Content,
+  Title,
+  QuestionLabel,
+  CurrentLabel,
+  Footer
+} from './styles';
 
 interface ResultsProps {
   questions: Question[];
@@ -21,22 +28,22 @@ export function Results({ questions, total, onPlayAgain }: ResultsProps) {
   );
 
   return (
-    <View style={styles.main}>
-      <ScrollView style={styles.scroll}>
-        <Text style={styles.title}>You score</Text>
-        <Text style={styles.currentLabel}>{`${totalCorrect} of ${total}`}</Text>
-        <View style={styles.content}>
+    <Main>
+      <Scroll>
+        <Title>You score</Title>
+        <CurrentLabel>{`${totalCorrect} of ${total}`}</CurrentLabel>
+        <Content>
           {questions.map(({ isCorrect, question }) => (
-            <Text key={question} style={styles.question}>{`${
+            <QuestionLabel key={question}>{`${
               isCorrect ? '+' : '-'
-            } ${question}`}</Text>
+            } ${question}`}</QuestionLabel>
           ))}
-        </View>
-      </ScrollView>
-      <View style={styles.footer}>
+        </Content>
+      </Scroll>
+      <Footer>
         <AppButton title="PLAY AGAIN?" onPress={onPlayAgain} />
-      </View>
-    </View>
+      </Footer>
+    </Main>
   );
 }
 
