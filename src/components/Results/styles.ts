@@ -2,7 +2,8 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   main: {
-    flex: 1
+    flex: 1,
+    backgroundColor: 'white'
   },
   scroll: {
     padding: 15
@@ -26,7 +27,7 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
   footer: {
-    paddingVertical: 10
+    padding: 15
   }
 });
 
