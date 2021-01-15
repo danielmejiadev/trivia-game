@@ -1,5 +1,4 @@
 import React from 'react';
-import he from 'he';
 
 import {
   Main,
@@ -33,7 +32,7 @@ export function QuestionCard({
           <Title>{title}</Title>
         </Header>
         <Content>
-          <Question>{he.decode(question)}</Question>
+          <Question>{question}</Question>
           <CurrentLabel>{`${current} of ${total}`}</CurrentLabel>
         </Content>
       </Overlay>

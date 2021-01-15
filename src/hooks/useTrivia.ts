@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useReducer } from 'react';
+import he from 'he';
 
 // Interfaces
 import { Question } from '../interfaces/Question';
@@ -60,7 +61,11 @@ export function useTrivia() {
   useEffect(() => {
     dispatch({
       type: ActionTypes.SET,
-      payload: results.map((result, index) => ({ ...result, id: index }))
+      payload: results.map((result, index) => ({
+        ...result,
+        question: he.decode(result.question),
+        id: index
+      }))
     });
   }, [results]);
 
