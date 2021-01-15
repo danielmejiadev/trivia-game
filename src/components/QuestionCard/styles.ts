@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 
 const { width: windowWidth } = Dimensions.get('window');
 const width = windowWidth * 0.8;
-const height = width * 2;
+const height = width * 1.8;
 
 export const Main = styled.View`
   position: absolute;
@@ -15,13 +15,13 @@ export const Main = styled.View`
   align-items: center;
 `;
 
-export const Overlay = styled.View`
+export const Overlay = styled.View<{ bgColor: string }>`
   align-items: center;
-  height: ${height};
-  width: ${width};
+  height: ${height}px;
+  width: ${width}px;
   padding: 20px;
   border-radius: 24px;
-  background-color: #c9e9e7;
+  background-color: ${({ bgColor }) => bgColor};
 `;
 
 export const Header = styled.View`

@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
   },
   buttons: {
     position: 'absolute',
-    bottom: 40,
+    bottom: 70,
     flexDirection: 'row',
     justifyContent: 'space-between'
   },

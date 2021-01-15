@@ -16,17 +16,19 @@ interface QuestionCardProps {
   question: string;
   current: number;
   total: number;
+  bgColor?: string;
 }
 
 export function QuestionCard({
   title,
   question,
   current,
-  total
+  total,
+  bgColor = '#74bcb8'
 }: QuestionCardProps) {
   return (
     <Main>
-      <Overlay>
+      <Overlay bgColor={bgColor}>
         <Header>
           <Title>{title}</Title>
         </Header>

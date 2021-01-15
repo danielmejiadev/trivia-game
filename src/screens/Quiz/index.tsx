@@ -66,6 +66,7 @@ export function Quiz({ navigation: { replace } }: RootStackProps<'Quiz'>) {
             question={currentQuestion.question}
             total={totalQuestion}
             current={currentIndex + 1}
+            bgColor="#c9e9e7"
           />
         </AnimatedCard>
       </View>
