@@ -49,8 +49,6 @@ function triviaReducer(state: State, { type, payload }: Action): State {
           return question;
         })
       };
-    default:
-      return state;
   }
 }
 
