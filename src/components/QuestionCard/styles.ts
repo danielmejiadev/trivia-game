@@ -29,7 +29,7 @@ export const Header = styled.View`
 `;
 
 export const Title = styled.Text`
-  font-size: 28;
+  font-size: 28px;
   font-weight: bold;
   text-align: center;
 `;
@@ -40,11 +40,11 @@ export const Content = styled.View`
 `;
 
 export const Question = styled.Text`
-  font-size: 20;
+  font-size: 20px;
   margin-bottom: 20px;
 `;
 
 export const CurrentLabel = styled.Text`
-  font-size: 16;
+  font-size: 16px;
   text-align: center;
 `;

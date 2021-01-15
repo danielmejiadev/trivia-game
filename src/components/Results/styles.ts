@@ -16,18 +16,18 @@ export const Content = styled.View`
 `;
 
 export const Title = styled.Text`
-  font-size: 28;
+  font-size: 28px;
   font-weight: bold;
   text-align: center;
 `;
 
 export const QuestionLabel = styled.Text`
-  font-size: 18;
+  font-size: 18px;
   margin-bottom: 20px;
 `;
 
 export const CurrentLabel = styled.Text`
-  font-size: 16;
+  font-size: 16px;
   text-align: center;
 `;
 
