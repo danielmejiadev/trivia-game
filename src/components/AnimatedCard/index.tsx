@@ -31,8 +31,12 @@ export function AnimatedCard({ children, onSnap }: AnimatedCardProps) {
     state,
     snapPoints: [-windowWidth, 0, windowWidth],
     config: {
-      damping: 10,
-      speed: 40
+      damping: 20,
+      mass: 1,
+      stiffness: 200,
+      overshootClamping: false,
+      restSpeedThreshold: 1,
+      restDisplacementThreshold: 0.5
     },
     onSnap: ([x]: number[]) => x !== 0 && onSnap(x)
   });
@@ -57,7 +61,9 @@ export function AnimatedCard({ children, onSnap }: AnimatedCardProps) {
       <Animated.View
         style={[
           styles.main,
-          { transform: [{ translateY: translateY }, { translateX }] }
+          {
+            transform: [{ translateY: translateY }, { translateX }]
+          }
         ]}
       >
         {children}
