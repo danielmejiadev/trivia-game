@@ -7,26 +7,30 @@ export enum States {
   ERROR = 'ERROR'
 }
 
-export function useFetch<T>(url: string): [T | undefined, States] {
+export function useFetch<T>(
+  callback: () => Promise<T>,
+  initialValue: T
+): [T, States, unknown] {
   const [state, setState] = useState<States>(States.IDLE);
-  const [data, setData] = useState<T>();
+  const [data, setData] = useState(initialValue);
+  const [error, setError] = useState();
 
   useEffect(() => {
-    async function fetchData() {
+    const fetchData = async () => {
       try {
         setState(States.LOADING);
-        const res = await fetch(url);
-        const json = await res.json();
-        setData(json);
+        const response = await callback();
+        setData(response);
         setState(States.FETCHED);
-      } catch (error) {
+      } catch (errorCatched) {
         setState(States.ERROR);
+        setError(errorCatched);
       }
-    }
+    };
     fetchData();
-  }, [url]);
+  }, [callback]);
 
-  return [data, state];
+  return [data, state, error];
 }
 
 export default useFetch;
