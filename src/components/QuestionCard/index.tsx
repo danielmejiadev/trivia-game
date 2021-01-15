@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import Animated from 'react-native-reanimated';
+import he from 'he';
 
 import styles from './styles';
 
@@ -24,7 +25,7 @@ export function QuestionCard({
           <Text style={styles.title}>{title}</Text>
         </View>
         <View style={styles.content}>
-          <Text style={styles.question}>{question}</Text>
+          <Text style={styles.question}>{he.decode(question)}</Text>
           <Text style={styles.currentLabel}>{`${current} of ${total}`}</Text>
         </View>
       </Animated.View>
