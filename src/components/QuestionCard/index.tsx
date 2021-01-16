@@ -15,7 +15,7 @@ interface QuestionCardProps {
   question: string;
   current: number;
   total: number;
-  bgColor?: string;
+  bgColor: string;
 }
 
 export function QuestionCard({
@@ -23,7 +23,7 @@ export function QuestionCard({
   question,
   current,
   total,
-  bgColor = '#74bcb8'
+  bgColor
 }: QuestionCardProps) {
   return (
     <Main>

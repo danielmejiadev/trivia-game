@@ -1,12 +1,16 @@
 import React, { useCallback } from 'react';
-import { ActivityIndicator, Text } from 'react-native';
+import { ActivityIndicator } from 'react-native';
+import { MaterialIcons } from '@expo/vector-icons';
+import { useTheme } from 'styled-components';
 
-import { Container, Cards } from './styles';
+// Styles
+import { Container, Cards, Text } from './styles';
 
 // Components
 import QuestionCard from '../../components/QuestionCard';
 import AnimatedCard from '../../components/AnimatedCard';
 import Results from '../../components/Results';
+import AppButton from '../../components/AppButton';
 
 // Hooks
 import { States } from '../../hooks/useFetch';
@@ -17,6 +21,8 @@ import { RootStackProps } from '../../navigation';
 
 export function Quiz({ navigation: { replace } }: RootStackProps<'Quiz'>) {
   const goToHome = useCallback(() => replace('Home'), [replace]);
+  const { colors } = useTheme();
+
   const {
     currentIndex,
     currentQuestion,
@@ -29,8 +35,18 @@ export function Quiz({ navigation: { replace } }: RootStackProps<'Quiz'>) {
   if ([States.LOADING, States.IDLE].includes(state)) {
     return (
       <Container>
-        <ActivityIndicator size="large" color="#74BCB8" />
+        <ActivityIndicator size="large" color={colors.primary} />
         <Text>Loading</Text>
+      </Container>
+    );
+  }
+
+  if (States.ERROR === state) {
+    return (
+      <Container>
+        <MaterialIcons name="error" size={96} color={colors.secondary} />
+        <Text>Oops, Something went wrong!</Text>
+        <AppButton title="Try Again" onPress={goToHome} />
       </Container>
     );
   }
@@ -58,6 +74,7 @@ export function Quiz({ navigation: { replace } }: RootStackProps<'Quiz'>) {
               question={question}
               total={totalQuestion}
               current={totalQuestion - index}
+              bgColor={colors.primary}
             />
           ))}
         <AnimatedCard onSnap={questionAnswered}>
@@ -66,7 +83,7 @@ export function Quiz({ navigation: { replace } }: RootStackProps<'Quiz'>) {
             question={currentQuestion.question}
             total={totalQuestion}
             current={currentIndex + 1}
-            bgColor="#c9e9e7"
+            bgColor={colors.primaryLight}
           />
         </AnimatedCard>
       </Cards>

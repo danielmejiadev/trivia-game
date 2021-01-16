@@ -8,6 +8,7 @@ import Quiz from './index';
 import QuestionCard from '../../components/QuestionCard';
 import AnimatedCard from '../../components/AnimatedCard';
 import Results from '../../components/Results';
+import AppButton from '../../components/AppButton';
 
 import { States } from '../../hooks/useFetch';
 import * as Trivia from '../../hooks/useTrivia';
@@ -35,6 +36,24 @@ describe('Quiz', () => {
 
     wrapper = shallow(<Quiz {...props} />);
     expect(wrapper.find(ActivityIndicator).props()).toBeTruthy();
+  });
+
+  it('should render error', () => {
+    jest.spyOn(Trivia, 'useTrivia').mockReturnValue({
+      currentIndex: 0,
+      currentQuestion: question as any,
+      questions: [],
+      totalQuestion: 0,
+      questionAnswered: jest.fn(),
+      state: States.ERROR
+    });
+
+    wrapper = shallow(<Quiz {...props} />);
+    wrapper
+      .find(AppButton)
+      .props()
+      .onPress(undefined as any);
+    expect(replace).toHaveBeenCalledWith('Home');
   });
 
   it('should render results', () => {
