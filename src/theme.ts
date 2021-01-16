@@ -1,5 +1,3 @@
-import { types } from '@babel/core';
-
 export const theme = {
   colors: {
     primary: '#74BCB8',

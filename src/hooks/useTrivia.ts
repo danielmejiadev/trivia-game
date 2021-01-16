@@ -10,48 +10,8 @@ import { useFetch } from './useFetch';
 // Client
 import { getQuestions } from '../apiClient/questions';
 
-const initialState = {
-  questions: [] as Question[],
-  currentIndex: 0
-};
-
-type State = typeof initialState;
-
-export enum ActionTypes {
-  SET = 'SET',
-  ANSWER_QUESTION = 'ANSWER_QUESTION'
-}
-
-interface Action {
-  type: ActionTypes;
-  payload: any;
-}
-
-function triviaReducer(state: State, { type, payload }: Action): State {
-  switch (type) {
-    case ActionTypes.SET:
-      return {
-        ...state,
-        questions: payload
-      };
-    case ActionTypes.ANSWER_QUESTION:
-      const { currentQuestion, isCorrect } = payload;
-      return {
-        ...state,
-        currentIndex: state.currentIndex + 1,
-        questions: state.questions.map((question) => {
-          if (question.id === currentQuestion.id) {
-            return {
-              ...question,
-              isCorrect
-            };
-          }
-
-          return question;
-        })
-      };
-  }
-}
+// Store
+import { triviaReducer, initialState, ActionTypes } from '../store/triviaStore';
 
 export function useTrivia() {
   const [results, state] = useFetch<Question[]>(getQuestions, []);
