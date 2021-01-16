@@ -1,11 +1,17 @@
 import React from 'react';
-import { View, Text, Dimensions } from 'react-native';
+import { Dimensions } from 'react-native';
 import { interpolate } from 'react-native-reanimated';
-import Animated from 'react-native-reanimated';
 import { PanGestureHandler } from 'react-native-gesture-handler';
 
 // Styles
-import styles from './styles';
+import {
+  Wrapper,
+  Buttons,
+  TrueContainer,
+  TrueText,
+  FalseContainer,
+  FalseText
+} from './styles';
 
 // Hooks
 import { useAnimated } from '../../hooks/useAnimated';
@@ -36,36 +42,21 @@ export function AnimatedCard({ children, onSnap }: AnimatedCardProps) {
 
   return (
     <PanGestureHandler {...gestureHandler}>
-      <Animated.View
-        style={[
-          styles.main,
-          {
-            transform: [{ translateY: translateY }, { translateX }]
-          }
-        ]}
+      <Wrapper
+        style={{
+          transform: [{ translateY: translateY }, { translateX }]
+        }}
       >
         {children}
-        <View style={styles.buttons}>
-          <Animated.View
-            style={[
-              styles.tagContainer,
-              styles.trueContainer,
-              { opacity: trueOpacity }
-            ]}
-          >
-            <Text style={styles.trueLabel}>TRUE</Text>
-          </Animated.View>
-          <Animated.View
-            style={[
-              styles.tagContainer,
-              styles.falseContainer,
-              { opacity: falseOpacity }
-            ]}
-          >
-            <Text style={styles.falseLabel}>FALSE</Text>
-          </Animated.View>
-        </View>
-      </Animated.View>
+        <Buttons>
+          <TrueContainer style={[{ opacity: trueOpacity }]}>
+            <TrueText>TRUE</TrueText>
+          </TrueContainer>
+          <FalseContainer style={[{ opacity: falseOpacity }]}>
+            <FalseText>FALSE</FalseText>
+          </FalseContainer>
+        </Buttons>
+      </Wrapper>
     </PanGestureHandler>
   );
 }

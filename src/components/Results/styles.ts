@@ -22,7 +22,8 @@ export const Title = styled.Text`
 `;
 
 export const QuestionContainer = styled.View<{ isCorrect: boolean }>`
-  background-color: ${({ isCorrect }) => (isCorrect ? '#74bcb8' : '#ec5288')};
+  background-color: ${({ isCorrect, theme: { colors } }) =>
+    isCorrect ? colors.primary : colors.secondary};
   border-radius: 12px;
   margin-bottom: 15px;
   flex-direction: row;
