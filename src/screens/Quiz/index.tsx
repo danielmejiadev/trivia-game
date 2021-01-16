@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
-import { ActivityIndicator, View, Text } from 'react-native';
+import { ActivityIndicator, Text } from 'react-native';
 
-import styles from './styles';
+import { Container, Cards } from './styles';
 
 // Components
 import QuestionCard from '../../components/QuestionCard';
@@ -28,10 +28,10 @@ export function Quiz({ navigation: { replace } }: RootStackProps<'Quiz'>) {
 
   if ([States.LOADING, States.IDLE].includes(state)) {
     return (
-      <View style={[styles.container]}>
+      <Container>
         <ActivityIndicator size="large" color="#74BCB8" />
         <Text>Loading</Text>
-      </View>
+      </Container>
     );
   }
 
@@ -46,8 +46,8 @@ export function Quiz({ navigation: { replace } }: RootStackProps<'Quiz'>) {
   }
 
   return (
-    <View style={styles.container}>
-      <View style={styles.cards}>
+    <Container>
+      <Cards>
         {questions
           .filter((_, index) => index > currentIndex)
           .reverse()
@@ -69,8 +69,8 @@ export function Quiz({ navigation: { replace } }: RootStackProps<'Quiz'>) {
             bgColor="#c9e9e7"
           />
         </AnimatedCard>
-      </View>
-    </View>
+      </Cards>
+    </Container>
   );
 }
 
