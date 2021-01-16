@@ -8,7 +8,7 @@
   },
   "setupFiles": ["<rootDir>/jest/setup.js"],
   "transformIgnorePatterns": [
-    "node_modules/(?!(jest-)?react-native|@react-native-community|react-native-elements)"
+    "node_modules/(?!(jest-)?react-native|react-native-reanimated|)"
   ],
   "coveragePathIgnorePatterns": ["/node_modules/", "/jest"],
   "collectCoverageFrom": ["src/**/*.{js,jsx,ts,tsx}"],

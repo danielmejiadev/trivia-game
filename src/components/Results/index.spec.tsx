@@ -27,7 +27,7 @@ describe('Results', () => {
       .props();
 
     expect(label).toEqual('1 of 2');
-    expect(firstResult).toEqual('+ question');
-    expect(secondResult).toEqual('- question1');
+    expect(firstResult).toEqual('question');
+    expect(secondResult).toEqual('question1');
   });
 });

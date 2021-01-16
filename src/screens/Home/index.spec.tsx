@@ -3,6 +3,8 @@ import { shallow, ShallowWrapper } from 'enzyme';
 import Home from './index';
 import AppButton from '../../components/AppButton';
 
+jest.mock('../../components/SampleCard', () => jest.fn());
+
 describe('Home', () => {
   let wrapper: ShallowWrapper;
   const replace = jest.fn();
