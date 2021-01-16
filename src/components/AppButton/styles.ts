@@ -8,7 +8,7 @@ export const Container = styled.TouchableOpacity`
 
 export const Text = styled.Text`
   font-size: 18px;
-  color: #fff;
+  color: white;
   align-self: center;
   text-transform: uppercase;
 `;

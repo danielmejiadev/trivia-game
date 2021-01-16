@@ -21,9 +21,24 @@ export const Title = styled.Text`
   text-align: center;
 `;
 
+export const QuestionContainer = styled.View<{ isCorrect: boolean }>`
+  background-color: ${({ isCorrect }) => (isCorrect ? '#74bcb8' : '#ec5288')};
+  border-radius: 12px;
+  margin-bottom: 15px;
+  flex-direction: row;
+`;
+
+export const Icon = styled.Text`
+  font-size: 28px;
+  color: white;
+  margin-left: 10px;
+`;
+
 export const QuestionLabel = styled.Text`
   font-size: 18px;
-  margin-bottom: 20px;
+  margin: 8px;
+  color: white;
+  flex: 1;
 `;
 
 export const CurrentLabel = styled.Text`

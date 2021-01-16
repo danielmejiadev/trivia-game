@@ -13,7 +13,9 @@ import {
   Title,
   QuestionLabel,
   CurrentLabel,
-  Footer
+  Footer,
+  Icon,
+  QuestionContainer
 } from './styles';
 
 interface ResultsProps {
@@ -34,9 +36,10 @@ export function Results({ questions, total, onPlayAgain }: ResultsProps) {
         <CurrentLabel>{`${totalCorrect} of ${total}`}</CurrentLabel>
         <Content>
           {questions.map(({ isCorrect, question }) => (
-            <QuestionLabel key={question}>{`${
-              isCorrect ? '+' : '-'
-            } ${question}`}</QuestionLabel>
+            <QuestionContainer key={question} isCorrect={isCorrect}>
+              <Icon>{isCorrect ? '+' : '-'}</Icon>
+              <QuestionLabel>{`${question}`}</QuestionLabel>
+            </QuestionContainer>
           ))}
         </Content>
       </Scroll>
