@@ -59,6 +59,25 @@ $ yarn prettier:write
 - Prettier
 - Github actions CICD
 
+
+## Project structure
+
+- apiClient
+  - Client http to execute API requests
+- components
+  - Reusable components
+- hooks
+  - Custom hooks
+- interfaces
+  - Application types
+- navigation
+  - Navigation definition
+- screens
+  - Main screens in the app
+- store
+  - Definition of stores
+- theme.ts
+
 ## Example
 
 <img width="250" height="450" src="screenshots/example1.png" alt="Initial state"></img>

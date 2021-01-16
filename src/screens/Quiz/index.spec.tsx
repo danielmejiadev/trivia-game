@@ -13,8 +13,6 @@ import AppButton from '../../components/AppButton';
 import { States } from '../../hooks/useFetch';
 import * as Trivia from '../../hooks/useTrivia';
 
-jest.mock('../../components/AnimatedCard', () => jest.fn());
-
 describe('Quiz', () => {
   let wrapper: ShallowWrapper;
   const replace = jest.fn();
