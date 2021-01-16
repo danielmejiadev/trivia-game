@@ -4,8 +4,6 @@ import SampleCard from './index';
 
 import * as hooks from '../../hooks/useAnimated';
 
-jest.mock('../../hooks/useAnimated', () => ({ useAnimated: jest.fn() }));
-
 describe('SampleCard', () => {
   let wrapper: ShallowWrapper;
 

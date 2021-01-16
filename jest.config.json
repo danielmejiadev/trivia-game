@@ -8,7 +8,7 @@
   },
   "setupFiles": ["<rootDir>/jest/setup.js"],
   "transformIgnorePatterns": [
-    "node_modules/(?!(jest-)?react-native|react-native-reanimated|)"
+    "node_modules/(?!(jest-)?react-native|react-native-reanimated|react-navigation|@react-navigation/.*)"
   ],
   "coveragePathIgnorePatterns": ["/node_modules/", "/jest"],
   "collectCoverageFrom": ["src/**/*.{js,jsx,ts,tsx}"],
