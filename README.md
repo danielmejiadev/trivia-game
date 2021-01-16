@@ -30,6 +30,34 @@ $ yarn lint
 # run prettier
 $ yarn prettier:write
 ```
+## Technologies used in the project
+
+### Basic
+- Expo
+- React Native
+- React
+- React Hooks API
+- React Context API
+- React Navigation 5
+- Typescript
+
+### Animations
+- React Native Reanimated
+- React Native Gesture Handler
+- React Native Redash
+
+### Styling and Theming 
+- Styled components
+
+### Testing
+- Jest
+- Testing library react hooks
+- Enzyme
+
+### Code quality
+- Eslint
+- Prettier
+- Github actions CICD
 
 ## Example
 
@@ -41,4 +69,5 @@ $ yarn prettier:write
 
 ## Stay in touch
 
+- [Repository](https://github.com/danielmejiadev/trivia-game)
 - Author - [Daniel Mejia](https://github.com/danielmejiadev)
